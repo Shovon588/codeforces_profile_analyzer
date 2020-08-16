@@ -1,0 +1,23 @@
+{% extends 'analyzer/base.html' %}
+{% block title_block %}Single Search{% endblock %}
+
+{% block content %}
+
+{% if data %}
+
+<h1>AChe</h1>
+
+{% else %}
+<div class="jumbotron mt-5">
+  <center>
+    <form class="w-75" method="POST">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" action="/" name="handle" placeholder="Codeforces Handle" required>
+      <button class="btn btn-outline-success mt-3" type="submit">Go, Fetch!</button>
+    </form>
+  </center>
+</div>
+
+{% endif %}
+
+{% endblock %}
