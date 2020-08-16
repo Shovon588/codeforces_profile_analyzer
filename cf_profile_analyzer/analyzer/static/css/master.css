@@ -1,0 +1,49 @@
+body{
+  font-family: 'Concert One', cursive;
+  font-size: 25px;
+}
+
+.profile-pic{
+  border: 2px solid black;
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+}
+
+.info-space{
+  margin-bottom: 10%;
+  line-height: 20px;
+}
+
+.handle{
+  font-size: 35px;
+  font-family: cursive;
+  margin-top: 5%;
+  font-weight: bold;
+}
+
+.rank{
+  font-size: 25px;
+  font-family: cursive;
+  margin-top: 5%;
+  font-weight: bold;
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+.style-seperate{
+  height: 3px;
+  width: 50px;
+  border-radius: 30px
+}
+
+.seperate{
+  height: 3px;
+  width: 250px;
+  background-color: #bfc3c9;
+  border-radius: 30px
+}
