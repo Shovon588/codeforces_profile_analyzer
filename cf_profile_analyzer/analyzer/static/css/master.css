@@ -3,6 +3,10 @@ body{
   font-size: 25px;
 }
 
+.big-brand{
+  font-size: 45px;
+}
+
 .profile-pic{
   border: 2px solid black;
   border-radius: 50%;
@@ -23,7 +27,7 @@ body{
 }
 
 .rank{
-  font-size: 25px;
+  font-size: 30px;
   font-family: cursive;
   margin-top: 5%;
   font-weight: bold;
@@ -46,4 +50,8 @@ body{
   width: 250px;
   background-color: #bfc3c9;
   border-radius: 30px
+}
+
+.comparison-table{
+  font-size: 20px;
 }
