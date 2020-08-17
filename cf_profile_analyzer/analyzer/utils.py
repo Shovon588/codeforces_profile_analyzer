@@ -29,16 +29,29 @@ def choose_color(rating):
 def get_user_info(handle):
     link = f"https://codeforces.com/api/user.info?handles={handle}"
 
-    data = ''
     try:
         user_info = requests.get(link).json()['result'][0]
-
-        data = {'curRating': user_info['rating'], 'curRank': user_info['rank'], 'maxRating': user_info['maxRating'],
-                'friendCount': user_info['friendOfCount'], 'photo': user_info['titlePhoto'],
-                'handle': user_info['handle'], 'curColor': choose_color(user_info['rating']),
-                'maxColor': choose_color(user_info['maxRating'])}
     except KeyError:
-        pass
+        data = {"message": f"{handle} does not exist."}
+        return data
+
+    data = {}
+    fields = ['rating', 'rank', 'maxRating', 'friendOfCount', 'titlePhoto', 'handle']
+    for field in fields:
+        if field in user_info:
+            data[field] = user_info[field]
+        else:
+            data[field] = "--"
+
+    if isinstance(data['rating'], int):
+        data['curColor'] = choose_color(data['rating'])
+    else:
+        data['curColor'] = "#808080"
+
+    if isinstance(data['maxRating'], int):
+        data['maxColor'] = choose_color(data['maxRating'])
+    else:
+        data['maxColor'] = "#808080"
 
     return data
 
@@ -46,20 +59,31 @@ def get_user_info(handle):
 def get_contest_info(handle):
     link = f"https://codeforces.com/api/user.rating?handle={handle}"
 
-    data = ''
-    try:
-        contests = requests.get(link).json()['result']
+    contests = requests.get(link).json()['result']
 
-        ratings = []
-        standings = []
-        for contest in contests:
-            ratings.append(contest['newRating'])
-            standings.append(contest['rank'])
+    ratings = []
+    standings = []
+    for contest in contests:
+        ratings.append(contest['newRating'])
+        standings.append(contest['rank'])
 
-        data = {'ratings': ratings, 'minRating': min(ratings), 'minStanding': min(standings),
-                'maxStanding': max(standings), 'minColor': choose_color(min(ratings))}
-    except KeyError:
-        pass
+    data = {'ratings': ratings}
+    if len(ratings)>0:
+        data['minRating'] = min(ratings)
+    else:
+        data['minRating'] = "--"
+
+    if len(standings)>0:
+        data['minStanding'] = min(standings)
+        data['maxStanding'] = max(standings)
+    else:
+        data['minStanding'] = "--"
+        data['maxStanding'] = "--"
+
+    if isinstance(data['minRating'], int):
+        data['minColor'] = choose_color(data['minRating'])
+    else:
+        data['minColor'] = "#808080"
 
     return data
 
@@ -118,8 +142,12 @@ def get_submission_info(handle):
         topSuccessIndex = get_top_five(successProblemIndex)
         topFailedIndex = get_top_five(failedProblemIndex)
 
-        successRatio = round((successfulSubmission/len(submissions))*100,2)
-        failedRatio = round((failedSubmission / len(submissions)) * 100,2)
+        if len(submissions)>0:
+            successRatio = round((successfulSubmission/len(submissions))*100,2)
+            failedRatio = round((failedSubmission / len(submissions)) * 100,2)
+        else:
+            successRatio = "--"
+            failedRatio = "--"
         data = {'totalSub': len(submissions), 'successSub': successfulSubmission, 'failedSub': failedSubmission,
                 'topTags': topTags, 'topSuccessIndex': topSuccessIndex, 'topFailedIndex': topFailedIndex,
                 'successRatio': successRatio, 'failedRatio': failedRatio}
