@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from . utils import *
 
 # Create your views here.
 
 
-def single_profile_search(request):
+def single(request):
 
     data = ''
     contest_info = ''
@@ -14,24 +14,46 @@ def single_profile_search(request):
     if request.method == 'POST':
         handle = request.POST['handle']
         data = get_user_info(handle)
-        contest_info = get_contest_info(handle)
-        submission_info = get_submission_info(handle)
-        
-        if len(data)==0:
-            messages.error(request, "Invalid user handle. Please provide a valid one.")
+        if "message" in data:
+            messages.error(request, data['message'])
+            data = ''
+        else:
+            contest_info = get_contest_info(handle)
+            submission_info = get_submission_info(handle)
 
     context = {'data': data, 'contest_info': contest_info, 'submission_info': submission_info}
 
-    return render(request, 'analyzer/single_search.html', context=context)
+    return render(request, 'analyzer/single.html', context=context)
 
 
-def single_profile_detail(request):
-    return HttpResponse("<h1>Single Result</h1>")
+def dual(request):
+    user1 = ''
+    user2 = ''
+    user1_contest = ''
+    user2_contest = ''
+    user1_submission = ''
+    user2_submission = ''
 
+    if request.method=='POST':
+        handle1 = request.POST['first']
+        handle2 = request.POST['second']
 
-def dual_profile_search(request):
-    return HttpResponse("<h1>Dual Search</h1>")
+        user1 = get_user_info(handle1)
+        user2 = get_user_info(handle2)
 
+        if 'message' in user1:
+            messages.error(request, user1['message'])
+            user1 = ''
+        elif 'message' in user2:
+            messages.error(request, user2['message'])
+            user2 = ''
+        else:
+            user1_contest = get_contest_info(handle1)
+            user1_submission  = get_submission_info(handle1)
+            user2_contest = get_contest_info(handle2)
+            user2_submission = get_submission_info(handle2)
 
-def dual_profile_detail(request):
-    return HttpResponse("<h1>Dual Result</h1>")
+    context = {'user1': user1, 'user1_contest': user1_contest, 'user1_submission': user1_submission,
+               'user2': user2, 'user2_contest': user2_contest, 'user2_submission': user2_submission}
+
+    return render(request, 'analyzer/dual.html', context=context)
