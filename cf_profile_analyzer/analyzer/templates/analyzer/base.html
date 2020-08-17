@@ -7,8 +7,9 @@
   <title>{%block title_block%}{% endblock %}</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Lakki+Reddy&display=swap" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/master.css' %}">
-  <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Do+Hyeon&display=swap" rel="stylesheet">
 
 <body>
   <div class="container">
@@ -16,8 +17,10 @@
       <div class="col-md-2"></div>
 
       <div class="col-md-8">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light techfont custom-navbar">
-          <a style="font-size:30px" class="navbar-brand big-brand" href="{% url 'single_search' %}">CFPA</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border rounded-bottom">
+          <a class="navbar-brand" href="{% url 'single' %}" style="font-size: 60px; color: blue;" data-toggle="tooltip" data-placement="top" title="Codeforces Profile Analyzer">
+            CFPA
+          </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,10 +28,13 @@
 
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav navbar-center" style="font-size:20px">
-              <a class="nav-item nav-link active" href="{% url 'dual_search' %}">Dual Profile</a>
+              <a class="nav-item nav-link active" href="{% url 'dual' %}">Dual Profile</a>
             </div>
           </div>
         </nav>
+        <div class="fork float-right">
+          <a href="https://github.com/Shovon588/codeforces_profile_analyzer" style="font-size: 15px; color: black;"><i class="fa fa-code-fork" aria-hidden="true"> Fork this repo</i></a>
+        </div>
       </div>
 
       <div class="col-md-2"></div>
@@ -51,6 +57,28 @@
 
     </div>
   </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-8 text-dark">
+          <footer class="text-center bg-light p-3 border rounded">
+            	&#169; SHOVON588
+            <br>
+            <a href="https://github.com/Shovon588/"><i id="social-fb" class="fa fa-github-square" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/mainulislam588/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            </div>
+          </footer>
+      </div>
+
+      <div class="col-md-2"></div>
+
+    </div>
+  </div>
+
+
 
 
   {# SCRIPTS#}
