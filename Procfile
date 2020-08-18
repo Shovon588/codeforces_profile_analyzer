@@ -1,0 +1,1 @@
+web: gunicorn cf_profile_analyzer.wsgi --log-file -
