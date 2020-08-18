@@ -10,126 +10,136 @@
 {% endfor %}
 
 
-{% if user1 and user2 %}
+<div class="row">
+  <div class="col-md-1"></div>
 
-<div class="user-comparison text-center">
-  <a style="color: {{ user1.curColor }}">{{ user1.handle }}</a> VS <a style="color: {{ user2.curColor }}">{{ user2.handle }}</a>
+  <div class="col-md-10">
+    {% if user1 and user2 %}
 
-  <table class="table table-hover table-striped text-center comparison-table mt-3">
-    <tbody>
+    <div class="user-comparison text-center">
+      <a style="color: {{ user1.curColor }}">{{ user1.handle }}</a> VS <a style="color: {{ user2.curColor }}">{{ user2.handle }}</a>
 
-      <tr>
-        <th scope="row">Rank</th>
-        <td style="color: {{ user1.curColor }}">{{ user1.rank }}</td>
-        <td style="color: {{ user2.curColor }}">{{ user2.rank }}</td>
-      </tr>
+      <table class="table table-hover table-striped text-center comparison-table mt-3">
+        <tbody>
 
-      <tr>
-        <th scope="row">Rating</th>
-        <td style="color: {{ user1.curColor }}">{{ user1.rating }}</td>
-        <td style="color: {{ user2.curColor }}">{{ user2.rating }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Rank</th>
+            <td style="color: {{ user1.curColor }}">{{ user1.rank }}</td>
+            <td style="color: {{ user2.curColor }}">{{ user2.rank }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Max. Rating</th>
-        <td style="color: {{ user1.maxColor }}">{{ user1.maxRating }}</td>
-        <td style="color: {{ user2.maxColor }}">{{ user2.maxRating }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Rating</th>
+            <td style="color: {{ user1.curColor }}">{{ user1.rating }}</td>
+            <td style="color: {{ user2.curColor }}">{{ user2.rating }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Min. Rating</th>
-        <td style="color: {{ user1_contest.minColor }}">{{ user1_contest.minRating }}</td>
-        <td style="color: {{ user2_contest.minColor }}">{{ user2_contest.minRating }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Max. Rating</th>
+            <td style="color: {{ user1.maxColor }}">{{ user1.maxRating }}</td>
+            <td style="color: {{ user2.maxColor }}">{{ user2.maxRating }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Max. Standing</th>
-        <td>{{ user1_contest.maxStanding }}</td>
-        <td>{{ user2_contest.maxStanding }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Min. Rating</th>
+            <td style="color: {{ user1_contest.minColor }}">{{ user1_contest.minRating }}</td>
+            <td style="color: {{ user2_contest.minColor }}">{{ user2_contest.minRating }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Min. Standing</th>
-        <td>{{ user1_contest.minStanding }}</td>
-        <td>{{ user2_contest.minStanding }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Max. Standing</th>
+            <td>{{ user1_contest.maxStanding }}</td>
+            <td>{{ user2_contest.maxStanding }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Friends</th>
-        <td>{{ user1.friendOfCount }}</td>
-        <td>{{ user2.friendOfCount }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Min. Standing</th>
+            <td>{{ user1_contest.minStanding }}</td>
+            <td>{{ user2_contest.minStanding }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Total Sub.</th>
-        <td>{{ user1_submission.totalSub }}</td>
-        <td>{{ user2_submission.totalSub }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Friends</th>
+            <td>{{ user1.friendOfCount }}</td>
+            <td>{{ user2.friendOfCount }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Successful Sub.</th>
-        <td>{{ user1_submission.successSub }}</td>
-        <td>{{ user2_submission.successSub }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Total Sub.</th>
+            <td>{{ user1_submission.totalSub }}</td>
+            <td>{{ user2_submission.totalSub }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Failed Sub.</th>
-        <td>{{ user1_submission.failedSub }}</td>
-        <td>{{ user2_submission.failedSub }}</td>
-      </tr>
+          <tr>
+            <th scope="row">Successful Sub.</th>
+            <td>{{ user1_submission.successSub }}</td>
+            <td>{{ user2_submission.successSub }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row">Ratio</th>
-        <td><span class="tab text-success">{{ user1_submission.successRatio }}</span> : <span class="text-danger">{{ user1_submission.failedRatio }}</span></td>
-        <td><span class="tab text-success">{{ user2_submission.successRatio }}</span> : <span class="text-danger">{{ user2_submission.failedRatio }}</span></td>
-      </tr>
+          <tr>
+            <th scope="row">Failed Sub.</th>
+            <td>{{ user1_submission.failedSub }}</td>
+            <td>{{ user2_submission.failedSub }}</td>
+          </tr>
 
-      <tr>
-        <th scope="row" class="mt-3">Top Solved Indexs</th>
-        <td>
-          {% for index,count in user1_submission.topSuccessIndex.items %}
-          {{index}} : {{count}}<br>
-          {% endfor %}
-        </td>
-        <td>
-          {% for index,count in user2_submission.topSuccessIndex.items %}
-          {{index}} : {{count}}<br>
-          {% endfor %}
-        </td>
-      </tr>
+          <tr>
+            <th scope="row">Ratio</th>
+            <td><span class="tab text-success">{{ user1_submission.successRatio }}</span> : <span class="text-danger">{{ user1_submission.failedRatio }}</span></td>
+            <td><span class="tab text-success">{{ user2_submission.successRatio }}</span> : <span class="text-danger">{{ user2_submission.failedRatio }}</span></td>
+          </tr>
 
-      <tr>
-        <th scope="row" class="mt-4">Top Solved Tags</th>
-        <td>
-          {% for index,count in user1_submission.topTags.items %}
-          {{index}} : {{count}}<br>
-          {% endfor %}
-        </td>
-        <td>
-          {% for index,count in user2_submission.topTags.items %}
-          {{index}} : {{count}}<br>
-          {% endfor %}
-        </td>
-      </tr>
+          <tr>
+            <th scope="row" class="mt-3">Top Solved Indexs</th>
+            <td>
+              {% for index,count in user1_submission.topSuccessIndex.items %}
+              {{index}} : {{count}}<br>
+              {% endfor %}
+            </td>
+            <td>
+              {% for index,count in user2_submission.topSuccessIndex.items %}
+              {{index}} : {{count}}<br>
+              {% endfor %}
+            </td>
+          </tr>
 
-    </tbody>
-  </table>
+          <tr>
+            <th scope="row" class="mt-4">Top Solved Tags</th>
+            <td>
+              {% for index,count in user1_submission.topTags.items %}
+              {{index}} : {{count}}<br>
+              {% endfor %}
+            </td>
+            <td>
+              {% for index,count in user2_submission.topTags.items %}
+              {{index}} : {{count}}<br>
+              {% endfor %}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+    {% else %}
+    <div class="jumbotron mt-3">
+      <center>
+        <form class="w-75" method="POST">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2" action="/" name="first" placeholder="First user's CF Handle" required style="height: 60px;">
+          <input class="form-control mr-sm-2 mt-2" action="/" name="second" placeholder="Second user's CF Handle" required style="height: 60px;">
+          <button class="btn btn-outline-success mt-3" type="submit">Go, Fetch!</button>
+        </form>
+      </center>
+    </div>
+    <br><br><br><br><br><br>
+    {% endif %}
+  </div>
+
+  <div class="col-md-1"></div>
 </div>
 
 
 
-  {% else %}
-  <div class="jumbotron mt-3">
-    <center>
-      <form class="w-75" method="POST">
-        {% csrf_token %}
-        <input class="form-control mr-sm-2" action="/" name="first" placeholder="First user's CF Handle" required>
-        <input class="form-control mr-sm-2 mt-2" action="/" name="second" placeholder="Second user's CF Handle" required>
-        <button class="btn btn-outline-success mt-3" type="submit">Go, Fetch!</button>
-      </form>
-    </center>
-  </div>
-  <br><br><br><br><br><br>
-  {% endif %}
-
-  {% endblock %}
+{% endblock %}
