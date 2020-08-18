@@ -3,16 +3,16 @@
 
 {% block content %}
 
-{% for message in messages %}
-<div class="alert alert-danger fade show text-center" role="alert">
-  {{ message }}
-</div>
-{% endfor %}
-
-
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
+  <div class="col-sm-1"></div>
+
+  <div class="col-sm-10">
+    {% for message in messages %}
+    <div class="alert alert-danger fade show text-center" role="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+    
     {% if data %}
     <center>
       <div class="image mt-3">
@@ -98,7 +98,7 @@
     {% endif %}
   </div>
 
-  <div class="col-md-1"></div>
+  <div class="col-sm-1"></div>
 </div>
 
 

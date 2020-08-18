@@ -1,6 +1,7 @@
 body {
   font-family: 'Concert One', cursive;
-  font-size: 25px;
+  font-size: 1.5em;
+  min-width: 370px;
 }
 
 h1 {
@@ -9,10 +10,6 @@ h1 {
 
 .input-form {
   height: 50vh;
-}
-
-.big-brand {
-  font-size: 45px;
 }
 
 .profile-pic {
@@ -28,14 +25,14 @@ h1 {
 }
 
 .handle {
-  font-size: 35px;
+  font-size: 2.2em;
   font-family: cursive;
   margin-top: 5%;
   font-weight: bold;
 }
 
 .rank {
-  font-size: 30px;
+  font-size: 2em;
   font-family: cursive;
   margin-top: 5%;
   font-weight: bold;
@@ -61,5 +58,5 @@ h1 {
 }
 
 .comparison-table {
-  font-size: 20px;
+  font-size: 1.3em;
 }
