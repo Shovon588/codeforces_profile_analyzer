@@ -1,15 +1,21 @@
 body {
   font-family: 'Concert One', cursive;
   font-size: 1.5em;
-  min-width: 370px;
+  min-width: 400px;
 }
 
 h1 {
   color: red;
 }
 
+.big-brand{
+  font-size: 60px;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
 .input-form {
-  height: 50vh;
+  min-height: 60px;
+  font-size: 22px;
 }
 
 .profile-pic {
@@ -25,14 +31,14 @@ h1 {
 }
 
 .handle {
-  font-size: 2.2em;
+  font-size: 40px;
   font-family: cursive;
   margin-top: 5%;
   font-weight: bold;
 }
 
 .rank {
-  font-size: 2em;
+  font-size: 40px;
   font-family: cursive;
   margin-top: 5%;
   font-weight: bold;
@@ -58,5 +64,5 @@ h1 {
 }
 
 .comparison-table {
-  font-size: 1.3em;
+  font-size: 21px;
 }
