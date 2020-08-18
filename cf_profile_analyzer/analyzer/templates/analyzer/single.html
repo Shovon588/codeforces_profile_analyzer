@@ -36,11 +36,10 @@
   <hr class="seperate">
 
   <div class="solved-index">
-    <h3>Top 5 solved indexs</h3>
+    <h3>Top solved indexs</h3>
     <table class="table table-hover table-striped text-center">
       <thead class="bg-dark text-light">
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Index</th>
           <th scope="col">Solved</th>
         </tr>
@@ -49,7 +48,6 @@
       <tbody>
         {% for index,count in submission_info.topSuccessIndex.items %}
         <tr>
-          <th scope="row">{{forloop.counter}}</th>
           <td>{{index}}</td>
           <td>{{count}}</td>
         </tr>
@@ -61,11 +59,10 @@
 <hr class="seperate mt-5">
 
 <div class="solved-tags">
-  <h3>Top 5 solved tags</h3>
+  <h3>Top solved tags</h3>
   <table class="table table-striped text-center">
-    <thead>
+    <thead class="bg-dark text-light">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Tag</th>
         <th scope="col">Solved</th>
       </tr>
@@ -74,7 +71,6 @@
     <tbody>
       {% for tag,count in submission_info.topTags.items %}
       <tr>
-        <th scope="row">{{forloop.counter}}</th>
         <td>{{tag}}</td>
         <td>{{count}}</td>
       </tr>
