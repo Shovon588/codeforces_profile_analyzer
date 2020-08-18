@@ -25,9 +25,9 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '1+g%(exxnb#pwmaum-8ld*ih-mw_4=wihs-=4%2qnv&_2&+bi9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'cfpa.pythonanywhere.com']
+ALLOWED_HOSTS = ['cfpa.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition

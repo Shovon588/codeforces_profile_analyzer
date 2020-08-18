@@ -16,7 +16,7 @@
     {% if user1 and user2 %}
 
     <div class="text-center table-responsive mt-4">
-      <a style="color: {{ user1.curColor }}">{{ user1.handle }}</a> VS <a style="color: {{ user2.curColor }}">{{ user2.handle }}</a>
+      <p style="font-size: 5vh;"><span style="color: {{ user1.curColor }}">{{ user1.handle }}</span> VS <span style="color: {{ user2.curColor }}">{{ user2.handle }}</span></p>
 
       <table class="table table-hover comparison-table mt-3">
         <tbody>
@@ -104,13 +104,13 @@
           <tr>
             <th scope="row" class="mt-4">Top Solved Tags</th>
             <td>
-              {% for index,count in user1_submission.topTags.items %}
-              {{index}} : {{count}}<br>
+              {% for tag,count in user1_submission.topTags.items %}
+              {{tag|title}} : {{count}}<br>
               {% endfor %}
             </td>
             <td>
-              {% for index,count in user2_submission.topTags.items %}
-              {{index}} : {{count}}<br>
+              {% for tag,count in user2_submission.topTags.items %}
+              {{tag|title}} : {{count}}<br>
               {% endfor %}
             </td>
           </tr>
@@ -126,13 +126,13 @@
       <center>
         <form class="w-75" method="POST">
           {% csrf_token %}
-          <input class="form-control mr-sm-2" action="/" name="first" placeholder="First user's CF Handle" required style="height: 60px;">
-          <input class="form-control mr-sm-2 mt-2" action="/" name="second" placeholder="Second user's CF Handle" required style="height: 60px;">
+          <input class="form-control mr-sm-2 input-form" action="/" name="first" placeholder="First user's CF Handle" required>
+          <input class="form-control mr-sm-2 mt-2 input-form" action="/" name="second" placeholder="Second user's CF Handle" required>
           <button class="btn btn-outline-success mt-3" type="submit">Go, Fetch!</button>
         </form>
       </center>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br><br>
     {% endif %}
   </div>
 
