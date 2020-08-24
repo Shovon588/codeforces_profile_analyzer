@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from . utils import *
+from . models import UserName
 
 # Create your views here.
 
@@ -13,6 +13,8 @@ def single(request):
     submission_info = ''
     if request.method == 'POST':
         handle = request.POST['handle']
+        handle = handle.lower()
+        UserName.objects.get_or_create(username=handle)
         data = get_user_info(handle)
         if "message" in data:
             messages.error(request, data['message'])
