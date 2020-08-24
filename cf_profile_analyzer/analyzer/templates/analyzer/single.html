@@ -21,15 +21,15 @@
 
 
       <div class="info-space mt-3">
-        <p class="handle"><a href="https://codeforces.com/profile/{{data.handle}}" style="color: {{ data.curColor }}">{{ data.handle }}</a><span class="tab" style="color: {{ data.curColor }}">{{ data.rating }}</span></p>
+        <p class="handle"><a href="https://codeforces.com/profile/{{data.handle}}" style="color: {{ data.curColor }}">{{ data.handle }}</a><a class="tab" style="color: {{ data.curColor }}">{{ data.rating }}</a></p>
         <p class="rank mt-4" style="color: {{ data.curColor }}">{{ data.rank|title }}</p>
-        <hr class="style-seperate my-5" style="background-color: {{ data.curColor }}">
+        <hr class="style-seperate my-4" style="background-color: {{ data.curColor }}">
         <p>Min Rating:<span style="color: {{ contest_info.minColor }}" class="tab">{{ contest_info.minRating }}</span></p>
         <p>Max Rating:<span style="color: {{ data.maxColor }}" class="tab">{{ data.maxRating }}</span></p>
-        <hr class="seperate my-5">
+        <hr class="seperate my-4">
         <p>Min Rank:<span class="tab">{{ contest_info.minStanding }}</span></p>
         <p>Max Rank:<span class="tab">{{ contest_info.maxStanding }}</span></p>
-        <hr class="seperate my-5">
+        <hr class="seperate my-4">
         <p>Total Submission:<span class="tab">{{ submission_info.totalSub }}</span></p>
         <p>Successful Submission:<span class="tab">{{ submission_info.successSub }}</span></p>
         <p>Failed Submission:<span class="tab">{{ submission_info.failedSub }}</span></p>
@@ -90,11 +90,11 @@
       <center>
         <form class="w-75" method="POST">
           {% csrf_token %}
-          <input class="form-control mr-sm-2 input-form" action="/" name="handle" placeholder="Codeforces Handle" required>
+          <input type="text" class="form-control mr-sm-2 input-form" action="/" name="handle" placeholder="Codeforces Handle" required>
           <button class="btn btn-outline-success mt-3" type="submit">Go, Fetch!</button>
         </form>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br>
     {% endif %}
   </div>
 
