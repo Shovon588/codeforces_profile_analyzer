@@ -1,6 +1,6 @@
 body {
-  font-family: 'Concert One', cursive;
-  font-size: 1.5em;
+  font-family: 'Do Hyeon', sans-serif;
+  min-width: 400px;
 }
 
 .big-brand{
@@ -9,7 +9,7 @@ body {
 }
 
 .input-form {
-  min-height: 70px;
+  height: 60px;
   font-size: 22px;
 }
 
@@ -22,7 +22,8 @@ body {
 
 .info-space {
   margin-bottom: 10%;
-  line-height: 20px;
+  line-height: 15px;
+  font-size: 25px;
 }
 
 .handle {
