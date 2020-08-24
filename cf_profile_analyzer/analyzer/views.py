@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib import messages
 from . utils import *
-from . models import UserName
+from . models import UserName, Compare
+import socket
 
 # Create your views here.
 
@@ -12,9 +13,12 @@ def single(request):
     contest_info = ''
     submission_info = ''
     if request.method == 'POST':
-        handle = request.POST['handle']
-        handle = handle.lower()
-        UserName.objects.get_or_create(username=handle)
+        handle = request.POST['handle'].lower()
+
+        hostname = socket.gethostname()
+        IPAddr = socket.gethostbyname(hostname)
+        UserName.objects.create(username=handle, host=hostname, ip_address=IPAddr)
+
         data = get_user_info(handle)
         if "message" in data:
             messages.error(request, data['message'])
@@ -36,12 +40,17 @@ def dual(request):
     user1_submission = ''
     user2_submission = ''
 
-    if request.method=='POST':
-        handle1 = request.POST['first']
-        handle2 = request.POST['second']
+    if request.method == 'POST':
+        handle1 = request.POST['first'].lower()
+        handle2 = request.POST['second'].lower()
 
         user1 = get_user_info(handle1)
         user2 = get_user_info(handle2)
+
+        hostname = socket.gethostname()
+        IPAddr = socket.gethostbyname(hostname)
+
+        Compare.objects.create(user1=handle1, user2=handle2, host=hostname, ip_address=IPAddr)
 
         if 'message' in user1:
             messages.error(request, user1['message'])
