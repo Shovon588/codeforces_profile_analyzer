@@ -74,8 +74,8 @@ def get_contest_info(handle):
         data['minRating'] = "--"
 
     if len(standings)>0:
-        data['minStanding'] = min(standings)
-        data['maxStanding'] = max(standings)
+        data['minStanding'] = max(standings)
+        data['maxStanding'] = min(standings)
     else:
         data['minStanding'] = "--"
         data['maxStanding'] = "--"
